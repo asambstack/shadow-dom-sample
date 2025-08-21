@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Iframe Content</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: #eef;
+            padding: 1em;
+            color: #333;
+        }
+        #target-element {
+            background-color: #d4edda;
+            color: #155724;
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid #c3e6cb;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <h2>This is inside the iframe</h2>
+    <!-- This div will host the Shadow DOM -->
+    <div id="shadow-host"></div>
+
+    <script>
+        // Use a self-executing function to avoid polluting the global scope
+        (function() {
+            // Select the host element for the shadow DOM
+            const host = document.querySelector('#shadow-host');
+            if (!host) return;
+
+            // Create a shadow root. The 'open' mode allows it to be accessed from outside via JavaScript.
+            const shadowRoot = host.attachShadow({ mode: 'open' });
+
+            // Define the HTML and CSS to be placed inside the shadow root
+            shadowRoot.innerHTML = `
+                <style>
+                    /* Styles defined here are scoped and only apply within this shadow DOM */
+                    #inner-container {
+                        padding: 15px;
+                        margin: 10px 0;
+                        background-color: #fff3cd;
+                        border: 1px solid #ffeeba;
+                        border-radius: 5px;
+                    }
+                    h3 {
+                        color: #856404;
+                    }
+                    #nested-shadow-host1 {
+                        margin: 10px 0;
+                        padding: 5px;
+                        border: 2px dashed #856404;
+                        border-radius: 5px;
+                    }
+                </style>
+                <h3>This is inside the Shadow DOM</h3>
+                <div id="inner-container">
+                    <p>This paragraph is also inside the shadow root.</p>
+                    <p id="target-element">Here is the target element!</p>
+                    <!-- Host for nested shadow root -->
+                    <div id="nested-shadow-host1"></div>
+                </div>
+            `;
+
+            // Create nested shadow root
+            const nestedHost = shadowRoot.querySelector('#nested-shadow-host1');
+            if (nestedHost) {
+                const nestedShadowRoot = nestedHost.attachShadow({ mode: 'open' });
+                
+                nestedShadowRoot.innerHTML = `
+                    <style>
+                        /* Styles for nested shadow DOM */
+                        .nested-content {
+                            background-color: #e7f3ff;
+                            border: 1px solid #b8daff;
+                            border-radius: 5px;
+                            padding: 12px;
+                            margin: 8px 0;
+                        }
+                        h4 {
+                            color: #004085;
+                            margin: 0 0 8px 0;
+                        }
+                        #nested-target {
+                            background-color: #d4edda;
+                            color: #155724;
+                            padding: 8px;
+                            border-radius: 3px;
+                            border: 1px solid #c3e6cb;
+                            font-weight: bold;
+                        }
+                    </style>
+                    <div class="nested-content">
+                        <h4>Nested Shadow DOM</h4>
+                        <p>This is inside the nested shadow root!</p>
+                        <p id="nested-target1">Nested shadow element for testing!</p>
+                    </div>
+                `;
+            }
+        })();
+    </script>
+</body>
+</html>

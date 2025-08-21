@@ -1,0 +1,97 @@
+<!-- index.html: The main page with the iframe -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Main Page</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            padding: 2em;
+            background-color: #f4f4f9;
+            color: #333;
+        }
+        h1 {
+            color: #1a1a1a;
+        }
+        iframe {
+            width: 100%;
+            height: 300px;
+            border: 2px solid #ccc;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+    </style>
+</head>
+<body>
+    <h1>Main Page Content</h1>
+    <p>The content below is inside an iframe.</p>
+    <iframe src="iframe_content.html" title="Iframe with Shadow DOM"></iframe>
+</body>
+</html>
+
+<!-- iframe_content.html: The content for the iframe -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Iframe Content</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: #eef;
+            padding: 1em;
+            color: #333;
+        }
+        #target-element {
+            background-color: #d4edda;
+            color: #155724;
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid #c3e6cb;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <h2>This is outside the iframe</h2>
+    <!-- This div will host the Shadow DOM -->
+    <!-- <div id="shadow-host1"></div>
+
+    <script>
+        // Use a self-executing function to avoid polluting the global scope
+        (function() {
+            // Select the host element for the shadow DOM
+            const host = document.querySelector('#shadow-host1');
+            if (!host) return;
+
+            // Create a shadow root. The 'open' mode allows it to be accessed from outside via JavaScript.
+            const shadowRoot = host.attachShadow({ mode: 'open' });
+
+            // Define the HTML and CSS to be placed inside the shadow root
+            shadowRoot.innerHTML = `
+                <style>
+                    /* Styles defined here are scoped and only apply within this shadow DOM */
+                    #inner-container {
+                        padding: 15px;
+                        margin: 10px 0;
+                        background-color: #fff3cd;
+                        border: 1px solid #ffeeba;
+                        border-radius: 5px;
+                    }
+                    h3 {
+                        color: #856404;
+                    }
+                </style>
+                <h3>This is inside the Shadow DOM</h3>
+                <div id="inner-container">
+                    <p>This paragraph is also inside the shadow root.</p>
+                    <p id="target-element">Here is the target element!</p>
+                </div>
+            `;
+        })();
+    </script> -->
+</body>
+</html>
