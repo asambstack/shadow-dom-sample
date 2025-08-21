@@ -1,9 +1,9 @@
-# shadow-dom-sample
-Shadow DOM Sample
+The repository contains the following files
+- Sample site (`index.html`) that can be used for testing
+- Sample script (`sample-test.js`) that can be used to trigger tests on Browserstack.
+- Detailed driver logs of the requests that are exchanged between client and the JAR (`sample-driver.log`).
 
-# Selenium WebDriver Test Log Explained
-
-## Session ID: `42f5a49b52e4df3a2d8bbeb0011bba4b92e51d5c`
+# Selenium WebDriver Test Log Details (`sample-driver.log`)
 
 ### Test Flow Summary
 This detailed log shows a Selenium test accessing shadow DOM elements inside an iframe, with **request bodies visible** showing exactly what data is sent to WebDriver.
