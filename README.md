@@ -1,5 +1,5 @@
 The repository contains the following files
-- Sample site (`index.html`) that can be used for testing
+- Sample site (`index.html`) that can be used for testing, deployed on: https://asambstack.github.io/shadow-dom-sample/
 - Sample script (`sample-test.js`) that can be used to trigger tests on Browserstack.
 - Detailed driver logs of the requests that are exchanged between client and the JAR (`sample-driver.log`).
 
